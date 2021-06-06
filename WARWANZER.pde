@@ -8,5 +8,5 @@ void draw(){
   text("Santiago", width/2,height/2+10);
   text("Leonel", width/2,height/2+20);
   text("Alejandro", width/2,height/2+30);
-
+  text("Joaquin", width/2,height/2+40);
 }
