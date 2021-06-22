@@ -5,6 +5,7 @@ PROYECTO: JUEGO WAR-WANZER
 
 - CARDOZO, Karen Yanina
 - VILTE, Gonzalo Fabian
+- MELO, Joaquin Alejandro
 */
 void setup() {
 
