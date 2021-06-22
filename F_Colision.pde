@@ -6,16 +6,3 @@ PROYECTO: JUEGO WAR-WANZER
 - CARDOZO, Karen Yanina
 - VILTE, Gonzalo Fabian
 */
-void setup() {
-
-}
-
-void draw() {
-
-}
-void keyPressed() {
-
-}
-void keyReleased() {
-
-}
