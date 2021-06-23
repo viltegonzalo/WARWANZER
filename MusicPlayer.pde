@@ -13,32 +13,32 @@ PROYECTO: JUEGO WAR-WANZER
 import ddf.minim.*;
 
 class MusicPlayer {
-  private Minim minim;
-  private AudioPlayer player;
+private Minim minim;
+private AudioPlayer player;
 
-  public MusicPlayer(Minim minim, String path) {
-    this.minim=minim;
-    this.player=this.minim.loadFile(path);
-  }
+public MusicPlayer(Minim minim, String path) {
+this.minim=minim;
+this.player=this.minim.loadFile(path);
+}
 
-  public void  playMusic() {
-    if (!player.isPlaying()) {
-      player.rewind();
-      this.player.play();
-    } else {
-      player.play( );
-    }
-  }
-  public void loopMusic() {
-    if (!player.isPlaying()) {      
-      player.rewind();
-      player.play( );
-    }
-  }
-  public void stopMusic() {
-    this.player.close();
-  }
-  public AudioPlayer getMusic(){
-  return this.player;
-  }
+public void  playMusic() {
+if (!player.isPlaying()) {
+player.rewind();
+this.player.play();
+} else {
+player.play( );
+}
+}
+public void loopMusic() {
+if (!player.isPlaying()) {      
+player.rewind();
+player.play( );
+}
+}
+public void stopMusic() {
+this.player.close();
+}
+public AudioPlayer getMusic(){
+return this.player;
+}
 }

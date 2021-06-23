@@ -11,62 +11,60 @@ PROYECTO: JUEGO WAR-WANZER
 - MERCADO,Alejandro Samuel
 */
 public class Entidad {
-  //Atributos
-  //private float x, y, forcaEmpurrao, vidas;
-  protected PVector posicion;
-  protected float fuerza;
-  protected float vida;
-  
-  //private int largura, altura, tipo, ajusteImagemX, ajusteImagemY, totalFrames, tempoDanoBase, tempoDano;
-  protected int ancho;
-  protected int altura;
-  protected int tipo;
-  protected int ajusteImagenX;
-  protected int ajusteImagenY;
-  protected int totalFrames;
+//Atributos
+//private float x, y, forcaEmpurrao, vidas;
+protected PVector posicion;
+protected float fuerza;
+protected float vida;
+
+//private int largura, altura, tipo, ajusteImagemX, ajusteImagemY, totalFrames, tempoDanoBase, tempoDano;
+protected int ancho;
+protected int altura;
+protected int tipo;
+protected int ajusteImagenX;
+protected int ajusteImagenY;
+protected int totalFrames;
  protected  int tiempoDanioBase;
  protected  int tiempoDanio;
-  
-  protected color _color;
-  protected PImage imagen;
-  
-  //CODIGO DE ALEX Y SANTI
-  //IMAGEN JUGADOR
-  protected PImage p1_1Imagem, p1_2Imagem,p1_3Imagem,p1_4Imagem,p1_5Imagem,p1_6Imagem,p1_7Imagem,p1_8Imagem,p1_9Imagem;
-  protected PImage p1_10Imagem,p1_11Imagem, p1_12Imagem,p1_13Imagem,p1_14Imagem,p1_15Imagem,p1_16Imagem,p1_17Imagem,p1_18Imagem;
-  protected PImage p1_19Imagem, p1_20Imagem,p1_21Imagem,p1_22Imagem,p1_23Imagem,p1_24Imagem,p1_25Imagem,p1_26Imagem, p1_27Imagem;
-  protected PImage p1_28Imagem, p1_29Imagem,p1_30Imagem,p1_31Imagem,p1_32Imagem,p1_33Imagem,p1_34Imagem,p1_35Imagem, p1_36Imagem;
-  //ENEMIGO
-  protected PImage enemigo1_1Imagem, enemigo1_2Imagem;
-  protected PImage enemigo2_1Imagem, enemigo2_2Imagem;
-  protected PImage enemigo3_1Imagem, enemigo3_2Imagem;
-  protected PImage enemigo4_1Imagem, enemigo4_2Imagem, enemigo4_3Imagem;
-  //CODIGO DE ALEX Y SANTI
-  
-  
-  
-  //private boolean collideEsquerda, collideDireita, collideCima, collideBaixo, levandoDano;
-  protected boolean chocarIzquierda;
-  protected boolean chocarDerecha;
-  protected boolean chocarArriba;
-  protected boolean chocarAbajo;
-  protected boolean recibeDanio;
+
+protected color _color;
+protected PImage imagen;
+//IMAGEN JUGADOR
+protected PImage p1_1Imagem, p1_2Imagem,p1_3Imagem,p1_4Imagem,p1_5Imagem,p1_6Imagem,p1_7Imagem,p1_8Imagem,p1_9Imagem;
+protected PImage p1_10Imagem,p1_11Imagem, p1_12Imagem,p1_13Imagem,p1_14Imagem,p1_15Imagem,p1_16Imagem,p1_17Imagem,p1_18Imagem;
+protected PImage p1_19Imagem, p1_20Imagem,p1_21Imagem,p1_22Imagem,p1_23Imagem,p1_24Imagem,p1_25Imagem,p1_26Imagem, p1_27Imagem;
+protected PImage p1_28Imagem, p1_29Imagem,p1_30Imagem,p1_31Imagem,p1_32Imagem,p1_33Imagem,p1_34Imagem,p1_35Imagem, p1_36Imagem;
+//ENEMIGO
+protected PImage enemigo1_1Imagem, enemigo1_2Imagem;
+protected PImage enemigo2_1Imagem, enemigo2_2Imagem;
+protected PImage enemigo3_1Imagem, enemigo3_2Imagem;
+protected PImage enemigo4_1Imagem, enemigo4_2Imagem, enemigo4_3Imagem;
+//CODIGO DE ALEX Y SANTI
 
 
-  //Constructor 1
-  public Entidad() {
-    this.ancho=20;
-    this.altura=20;
-    this.posicion=new PVector((int)250-this.ancho/2,(int)250-this.altura/2);
-    this._color=color(250,0,0);
-    this.fuerza=5;
-    this.tipo=1;
-    this.totalFrames=0;
-    this.tiempoDanioBase=10;
-    this.tiempoDanio=this.tiempoDanioBase;
-    this.recibeDanio=false;
 
-//BORRAR
+//private boolean collideEsquerda, collideDireita, collideCima, collideBaixo, levandoDano;
+protected boolean chocarIzquierda;
+protected boolean chocarDerecha;
+protected boolean chocarArriba;
+protected boolean chocarAbajo;
+protected boolean recibeDanio;
+
+
+/**Construtor por defecto*/
+public Entidad() {
+this.ancho=20;
+this.altura=20;
+this.posicion=new PVector((int)250-this.ancho/2,(int)250-this.altura/2);
+this._color=color(250,0,0);
+this.fuerza=5;
+this.tipo=1;
+this.totalFrames=0;
+this.tiempoDanioBase=10;
+this.tiempoDanio=this.tiempoDanioBase;
+this.recibeDanio=false;
+
+
 p1_1Imagem = loadImage("images/jugador/1.png");
 p1_2Imagem = loadImage("images/jugador/2.png");
 p1_3Imagem = loadImage("images/jugador/3.png");
@@ -107,91 +105,93 @@ p1_34Imagem = loadImage("images/jugador/34.png");
 p1_35Imagem = loadImage("images/jugador/35.png");
 p1_36Imagem = loadImage("images/jugador/36.png");
 
-    enemigo1_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
-    enemigo1_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
-    enemigo2_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
-    enemigo2_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
-    enemigo3_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
-    enemigo3_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
-    enemigo4_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
-    enemigo4_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
-    enemigo4_3Imagem = loadImage("images/enemigo/robotEne1_2.png");
+enemigo1_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
+enemigo1_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
+enemigo2_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
+enemigo2_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
+enemigo3_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
+enemigo3_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
+enemigo4_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
+enemigo4_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
+enemigo4_3Imagem = loadImage("images/enemigo/robotEne1_2.png");
 
-    bala1Imagem = loadImage("images/item/bala1Base.png");
-    //caixa1BaseImagem = loadImage("images/item/caixa1Base_100.png");
+bala1Imagem = loadImage("images/item/bala1Base.png");
+//caixa1BaseImagem = loadImage("images/item/caixa1Base_100.png");
 
-    moeda1_1Imagem = loadImage("images/item/moeda1_1Base.png");
-    moeda1_2Imagem = loadImage("images/item/moeda1_2Base.png");
-    moeda1_3Imagem = loadImage("images/item/moeda1_3Base.png");
-    vida1Imagem = loadImage("images/item/vida1Base.png");
+moeda1_1Imagem = loadImage("images/item/moeda1_1Base.png");
+moeda1_2Imagem = loadImage("images/item/moeda1_2Base.png");
+moeda1_3Imagem = loadImage("images/item/moeda1_3Base.png");
+vida1Imagem = loadImage("images/item/vida1Base.png");
 //BORRAR
-  }
+}
 
-  //Constructor 2
-  public Entidad(PImage imagen) {
-    this.ancho = 20;
-    this.altura = 20;    
-    this.posicion=new PVector((int)250-this.ancho/2,(int)250-this.altura/2);
-    this._color=color(250,0,0);
-    this.imagen=imagen;
-    this.fuerza=5;
-    this.tipo=1;
-    this.totalFrames=0;
-    this.tiempoDanioBase=10;
-    this.tiempoDanio=this.tiempoDanioBase;
-    this.recibeDanio=false;
-  }
+/**Construtor parametrizado*/
+public Entidad(PImage imagen) {
+this.ancho = 20;
+this.altura = 20;    
+this.posicion=new PVector((int)250-this.ancho/2,(int)250-this.altura/2);
+this._color=color(250,0,0);
+this.imagen=imagen;
+this.fuerza=5;
+this.tipo=1;
+this.totalFrames=0;
+this.tiempoDanioBase=10;
+this.tiempoDanio=this.tiempoDanioBase;
+this.recibeDanio=false;
+}
 
-  //Metodos
-  void paraDiseniar() {
-    if (this.imagen != null) {
-      noStroke();
-      fill(255,255,255,0);
-      rect(this.posicion.x, this.posicion.y, this.ancho, this.altura);
-      if (this.recibeDanio == true) {
-        tint(255, 255-this.tiempoDanio*20, 255-this.tiempoDanio*20);
-        if (frameCount % 5 == 0) {
-          this.tiempoDanio -= 1;
-          if (this.tiempoDanio <= 0) {
-            this.recibeDanio = false;
-            this.tiempoDanio = this.tiempoDanioBase;
-          }
-        }
-      } else {
-        noTint();
-      }
-      image(this.imagen, this.posicion.x+this.ajusteImagenX, this.posicion.y+this.ajusteImagenY);
-    } else {
-      noStroke();
-      fill(this._color);
-      rect(this.posicion.x, this.posicion.y, this.ancho, this.altura);
-    }
-  }
+ //---------ZONA METODOS------//
+ public void paraDiseniar() {
+if (this.imagen != null) {
+noStroke();
+fill(255,255,255,0);
+rect(this.posicion.x, this.posicion.y, this.ancho, this.altura);
+if (this.recibeDanio == true) {
+tint(255, 255-this.tiempoDanio*20, 255-this.tiempoDanio*20);
+if (frameCount % 5 == 0) {
+this.tiempoDanio -= 1;
+if (this.tiempoDanio <= 0) {
+  this.recibeDanio = false;
+  this.tiempoDanio = this.tiempoDanioBase;
+}
+}
+} else {
+noTint();
+}
+image(this.imagen, this.posicion.x+this.ajusteImagenX, this.posicion.y+this.ajusteImagenY);
+} else {
+noStroke();
+fill(this._color);
+rect(this.posicion.x, this.posicion.y, this.ancho, this.altura);
+}
+}
 
-  void esEmpujado(Entidad otro, float fuerza) {
-    String lado;
-    lado = chocarLado(this, otro);
-    if (lado == "DERECHA") {
-      this.posicion.x -= fuerza;
-    } else if (lado == "IZQUIERDA") {
-      this.posicion.x += fuerza;
-    } else if (lado == "ABAJO") {
-      this.posicion.y -= fuerza;
-    } else if (lado == "ARRIBA") {
-      this.posicion.y += fuerza;
-    }
-  }
- 
-  public PVector getPos(){
-    return this.posicion;
-  }
-  public int getAncho(){
-    return this.ancho;
-  }
-  public int getAltura(){
-    return this.altura;
-  }
-  public float getFuerza(){
-    return this.fuerza;
-  }
+ public void esEmpujado(Entidad otro, float fuerza) {
+String lado;
+lado = chocarLado(this, otro);
+if (lado == "DERECHA") {
+this.posicion.x -= fuerza;
+} else if (lado == "IZQUIERDA") {
+this.posicion.x += fuerza;
+} else if (lado == "ABAJO") {
+this.posicion.y -= fuerza;
+} else if (lado == "ARRIBA") {
+this.posicion.y += fuerza;
+}
+}
+
+
+ //----------- METODOS ACCESORES------//
+public PVector getPos(){
+return this.posicion;
+}
+public int getAncho(){
+return this.ancho;
+}
+public int getAltura(){
+return this.altura;
+}
+public float getFuerza(){
+return this.fuerza;
+}
 }
