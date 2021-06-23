@@ -12,8 +12,8 @@ PROYECTO: JUEGO WAR-WANZER
 */
 
 void preCarga() {
-  revolverImagen = loadImage("imagens/revolver.png");
-  metralladoraImagen = loadImage("imagens/metralhadora.png");
+  revolverImagen = loadImage("images/jugador/revolver.png");
+  metralladoraImagen = loadImage("images/jugador/metralhadora.png");
   btn1Imagem = loadImage("images/barraEstado/btn1Base.png");
   btn2Imagem = loadImage("images/barraEstado/btn2Base.png");
   btn3Imagem = loadImage("images/barraEstado/btn3Base.png");
