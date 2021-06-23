@@ -1,15 +1,15 @@
 /*
 FUNDAMETO DE PROGRAMACION ORIENTADO OBJETOS
-FACULTAD DE INGENIERIA - TECNICATURA EN DISEÑO DE VIDEO JUEGOS
-PROYECTO: JUEGO WAR-WANZER
-
-- CARDOZO, Karen Yanina
-- VILTE, Gonzalo Fabian
-- SARAVIA, Maximiliano Leonel
-- MELO, Joaquin Alejandro
-- RODRIGUEZ, Santiago Agustin
-- MERCADO,Alejandro Samuel
-*/
+ FACULTAD DE INGENIERIA - TECNICATURA EN DISEÑO DE VIDEO JUEGOS
+ PROYECTO: JUEGO WAR-WANZER
+ 
+ - CARDOZO, Karen Yanina
+ - VILTE, Gonzalo Fabian
+ - SARAVIA, Maximiliano Leonel
+ - MELO, Joaquin Alejandro
+ - RODRIGUEZ, Santiago Agustin
+ - MERCADO,Alejandro Samuel
+ */
 class Enemigo extends Entidad {
 
   //Atributos
@@ -23,40 +23,40 @@ class Enemigo extends Entidad {
   //Construtor
   public Enemigo() {     
     this._color = color(0, 255, 0);
-    this.velocidadBase = random(0.1, 0.3);
+    this.velocidadBase = random(0.1, 0.2);
     this.velocidadX = 0;
     this.velocidadY = 0;
-    this.aceleracion = 0.5;
+    this.aceleracion = 0.1;//<<<<VELOCIDAD DEL ENEMIGO
     this.fuerza = 1;
     this.tipo = round(random(1, 4));
     //this.tipo = 4;
     this.imagen = loadImage("imagens/zombie" + this.tipo + "_1.png");
     this.vida = round(random(1, 2));
-this.frame = 1;
-if (this.tipo == 1) {
-this.ancho = 34;
-this.altura = 40;
-this.ajusteImagenX = -2;
-this.ajusteImagenY = 0;
-this.totalFrames = 2;
-} else if (this.tipo == 2) {
-this.ancho = 34;
-this.altura = 40;
-this.ajusteImagenX = 0;
-this.ajusteImagenY = 0;
-this.totalFrames = 2;
-} else if (this.tipo == 3) {
-this.ancho = 34;
-this.altura = 40;
-this.ajusteImagenX = -4;
-this.ajusteImagenY = 0;
-this.totalFrames = 2;
-} else if (this.tipo == 4) {
-this.ancho = 34;
-this.altura = 40;
-this.ajusteImagenX = 0;
-this.ajusteImagenY = 0;
-this.totalFrames = 4;
+    this.frame = 1;
+    if (this.tipo == 1) {
+      this.ancho = 34;
+      this.altura = 40;
+      this.ajusteImagenX = -2;
+      this.ajusteImagenY = 0;
+      this.totalFrames = 2;
+    } else if (this.tipo == 2) {
+      this.ancho = 34;
+      this.altura = 40;
+      this.ajusteImagenX = 0;
+      this.ajusteImagenY = 0;
+      this.totalFrames = 2;
+    } else if (this.tipo == 3) {
+      this.ancho = 34;
+      this.altura = 40;
+      this.ajusteImagenX = -4;
+      this.ajusteImagenY = 0;
+      this.totalFrames = 2;
+    } else if (this.tipo == 4) {
+      this.ancho = 34;
+      this.altura = 40;
+      this.ajusteImagenX = 0;
+      this.ajusteImagenY = 0;
+      this.totalFrames = 4;
     }
     float nacerX = random(1);
     float nacerY = random(1);
@@ -154,33 +154,33 @@ this.totalFrames = 4;
     }
   }
 
-/*
+  /*
   void cadaEnemigo() {
-    for (int i=0; i<enemigos.size(); i++) {
-      enemigos.get(i).seguirJugador(jugador1);
-      boolean collidePlayer = chocarRect(jugador1, enemigos.get(i));
-      if (i < enemigos.size()) {
-        for (int ii=i+1; ii<enemigos.size(); ii++) {
-          boolean collideZumbie = chocarRect(enemigos.get(i), enemigos.get(ii));
-          if (collideZumbie == true) {
-            enemigos.get(i).esEmpujado(enemigos.get(ii), enemigos.get(i).getFuerza());
-            enemigos.get(ii).esEmpujado(enemigos.get(i), enemigos.get(ii).getFuerza());
-          }
-        }
-      }
-      if (collidePlayer == true) {
-        jugador1.esEmpujado(enemigos.get(i), jugador1.getFuerza());
-        enemigos.get(i).esEmpujado(jugador1, jugador1.getFuerza());
-        jugador1.vida--;
-      }
-      enemigos.get(i).paraDiseniar();
-      enemigos.get(i).animar();
-      //Barra de Vida
-      barraDeVida(enemigos.get(i));
-    }
-  }
-  */
-  
+   for (int i=0; i<enemigos.size(); i++) {
+   enemigos.get(i).seguirJugador(jugador1);
+   boolean collidePlayer = chocarRect(jugador1, enemigos.get(i));
+   if (i < enemigos.size()) {
+   for (int ii=i+1; ii<enemigos.size(); ii++) {
+   boolean collideZumbie = chocarRect(enemigos.get(i), enemigos.get(ii));
+   if (collideZumbie == true) {
+   enemigos.get(i).esEmpujado(enemigos.get(ii), enemigos.get(i).getFuerza());
+   enemigos.get(ii).esEmpujado(enemigos.get(i), enemigos.get(ii).getFuerza());
+   }
+   }
+   }
+   if (collidePlayer == true) {
+   jugador1.esEmpujado(enemigos.get(i), jugador1.getFuerza());
+   enemigos.get(i).esEmpujado(jugador1, jugador1.getFuerza());
+   jugador1.vida--;
+   }
+   enemigos.get(i).paraDiseniar();
+   enemigos.get(i).animar();
+   //Barra de Vida
+   barraDeVida(enemigos.get(i));
+   }
+   }
+   */
+
   void cadaEnemigo(ArrayList<Enemigo> enemigos) {
     for (int i=0; i<enemigos.size(); i++) {
       enemigos.get(i).seguirJugador(jugador1);
@@ -205,7 +205,7 @@ this.totalFrames = 4;
       barraDeVida(enemigos.get(i));
     }
   }
-  
+
 
   public void setAceleracion() {
     this.aceleracion=2;

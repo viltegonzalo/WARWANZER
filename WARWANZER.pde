@@ -1,15 +1,15 @@
 /*
 FUNDAMETO DE PROGRAMACION ORIENTADO OBJETOS
-FACULTAD DE INGENIERIA - TECNICATURA EN DISEÑO DE VIDEO JUEGOS
-PROYECTO: JUEGO WAR-WANZER
-
-- CARDOZO, Karen Yanina
-- VILTE, Gonzalo Fabian
-- SARAVIA,Maximiliano Leonel
-- MELO, Joaquin Alejandro
-- RODRIGUEZ, Santiago Agustin
-- MERCADO,Alejandro Samuel
-*/
+ FACULTAD DE INGENIERIA - TECNICATURA EN DISEÑO DE VIDEO JUEGOS
+ PROYECTO: JUEGO WAR-WANZER
+ 
+ - CARDOZO, Karen Yanina
+ - VILTE, Gonzalo Fabian
+ - SARAVIA,Maximiliano Leonel
+ - MELO, Joaquin Alejandro
+ - RODRIGUEZ, Santiago Agustin
+ - MERCADO,Alejandro Samuel
+ */
 import processing.video.*;
 VideoPlayer intro;
 MusicPlayer ost1;
@@ -85,19 +85,19 @@ void setup() {
   preCarga();//F_barraEstado
 
   ////VIDEO INTRO
-  intro=new VideoPlayer(new Movie(this, "/video/video.mov"), width, height);  
+  //intro=new VideoPlayer(new Movie(this, "/video/video.mov"), width, height);  
   ///////
-  ost1=new MusicPlayer(new Minim(this),"/data/music/nivel"+(int)random(0,12)+".mp3");
-  ost2=new MusicPlayer(new Minim(this),"/data/music/nivel"+(int)random(0,12)+".mp3");
-  ost3=new MusicPlayer(new Minim(this),"/data/music/nivel"+(int)random(0,12)+".mp3");
+  ost1=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
+  ost2=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
+  ost3=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
   ost1.getMusic().setVolume(0.5);
   ost2.getMusic().setVolume(0.5);
   ost3.getMusic().setVolume(0.5);
-  ostGameOver=new MusicPlayer(new Minim(this),"/data/music/gameover.mp3");
-  sfxGun=new MusicPlayer(new Minim(this),"/data/music/gun1.mp3");
-  nivel1=new Nivel(1, "images/niveles/fondo2.jpg", 8,ost1);
-  nivel2=new Nivel(2, "images/niveles/fondo3.jpg", 8,ost2);
-  nivel3=new Nivel(3, "images/niveles/fondo1.jpg", 8,ost3);
+  ostGameOver=new MusicPlayer(new Minim(this), "/data/music/gameover.mp3");
+  sfxGun=new MusicPlayer(new Minim(this), "/data/music/gun1.mp3");
+  nivel1=new Nivel(1, "images/niveles/fondo2.jpg", 8, ost1);
+  nivel2=new Nivel(2, "images/niveles/fondo3.jpg", 8, ost2);
+  nivel3=new Nivel(3, "images/niveles/fondo1.jpg", 8, ost3);
   //nivel1= loadImage("images/niveles/fondo2.jpg");
   //nivel2=loadImage("images/niveles/fondo3.jpg");
 
@@ -122,7 +122,8 @@ void setup() {
 }
 
 void draw() {
-  if (intro.isFinishMovie()) {
+  //if (intro.isFinishMovie()) {
+  if (true) {
     if (pause == false) {
       switch(fase) {
       case 1: 
@@ -131,7 +132,7 @@ void draw() {
           Enemigo generar=  nivel1.getListEne().get(i);
           generar.cadaEnemigo(nivel1.getListEne());
         }
-        balasRevolver=15;
+
         frames(nivel1.getListEne());
         cadaBala(nivel1.getListEne());
         break;
@@ -142,7 +143,7 @@ void draw() {
           Enemigo generar=  nivel2.getListEne().get(i);
           generar.cadaEnemigo(nivel2.getListEne());
         }
-         balasRevolver=20;
+
         frames(nivel2.getListEne());
         cadaBala(nivel2.getListEne());
         break;
@@ -153,7 +154,7 @@ void draw() {
           Enemigo generar=  nivel3.getListEne().get(i);
           generar.cadaEnemigo(nivel3.getListEne());
         }
-          balasRevolver=20;
+
         frames(nivel3.getListEne());
         cadaBala(nivel3.getListEne());//F_Mira
         break;
@@ -183,7 +184,7 @@ void draw() {
       generar.cadaCaja();
       generar.grade();
     }
-  } else intro.moviePlay(); ///Reproduce el video INTRO
+  } //else intro.moviePlay(); ///Reproduce el video INTRO
 }
 
 void keyPressed() {
