@@ -5,5 +5,6 @@ PROYECTO: JUEGO WAR-WANZER
 
 - CARDOZO, Karen Yanina
 - VILTE, Gonzalo Fabian
-- Saravia, Maximiliano Leonel
+- SARAVIA, Maximiliano Leonel
+- MELO, Joaquin Alejandro
 */
