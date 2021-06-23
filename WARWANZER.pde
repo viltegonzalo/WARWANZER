@@ -92,6 +92,7 @@ void setup() {
   ost1=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
   ost2=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
   ost3=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
+  ost4=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
   ost1.getMusic().setVolume(0.5);
   ost2.getMusic().setVolume(0.5);
   ost3.getMusic().setVolume(0.5);
