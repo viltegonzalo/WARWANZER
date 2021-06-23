@@ -15,6 +15,7 @@ VideoPlayer intro;
 MusicPlayer ost1;
 MusicPlayer ost2;
 MusicPlayer ost3;
+MusicPlayer ost4;
 MusicPlayer ostGameOver;
 MusicPlayer sfxGun;
 ArrayList<Item> items= new ArrayList();
@@ -76,6 +77,7 @@ int limiteCajas = 150;
 Nivel nivel1;
 Nivel nivel2;
 Nivel nivel3;
+Nivel nivel4;
 
 void setup() {
   frameRate(fps);
@@ -93,11 +95,13 @@ void setup() {
   ost1.getMusic().setVolume(0.5);
   ost2.getMusic().setVolume(0.5);
   ost3.getMusic().setVolume(0.5);
+  ost4.getMusic().setVolume(0.5);
   ostGameOver=new MusicPlayer(new Minim(this), "/data/music/gameover.mp3");
   sfxGun=new MusicPlayer(new Minim(this), "/data/music/gun1.mp3");
-  nivel1=new Nivel(1, "images/niveles/fondo2.jpg", 8, ost1);
-  nivel2=new Nivel(2, "images/niveles/fondo3.jpg", 8, ost2);
-  nivel3=new Nivel(3, "images/niveles/fondo1.jpg", 8, ost3);
+  nivel1=new Nivel(1, "images/niveles/fondo1.jpg", 8, ost1);
+  nivel2=new Nivel(2, "images/niveles/fondo2.jpg", 8, ost2);
+  nivel3=new Nivel(3, "images/niveles/fondo3.jpg", 8, ost3);
+  nivel4=new Nivel(3, "images/niveles/fondo3.jpg", 8, ost4);
   //nivel1= loadImage("images/niveles/fondo2.jpg");
   //nivel2=loadImage("images/niveles/fondo3.jpg");
 
@@ -157,6 +161,17 @@ void draw() {
 
         frames(nivel3.getListEne());
         cadaBala(nivel3.getListEne());//F_Mira
+        break;
+      case 4:
+        nivel3.getMusic().stopMusic();        
+        nivel4.displayNivel();      
+        for (int i=0; i<nivel4.getListEne().size(); i++) {
+          Enemigo generar=  nivel4.getListEne().get(i);
+          generar.cadaEnemigo(nivel4.getListEne());
+        }
+
+        frames(nivel4.getListEne());
+        cadaBala(nivel4.getListEne());//F_Mira
         break;
       default: 
         fase=1;
