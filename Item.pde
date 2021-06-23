@@ -43,6 +43,8 @@ this.ancho = this.imagen.width;
 this.altura = this.imagen.height;
 }
 
+
+//---------ZONA METODOS------//
 public void rodar(){
 this.tiempoVida -= 1;
 if(this.tiempoVida <= 3){
