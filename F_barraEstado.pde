@@ -1,15 +1,15 @@
 /*
 FUNDAMETO DE PROGRAMACION ORIENTADO OBJETOS
-FACULTAD DE INGENIERIA - TECNICATURA EN DISEÑO DE VIDEO JUEGOS
-PROYECTO: JUEGO WAR-WANZER
-
-- CARDOZO, Karen Yanina
-- VILTE, Gonzalo Fabian
-- SARAVIA, Maximiliano Leonel
-- MELO, Joaquin Alejandro
-- RODRIGUEZ, Santiago Agustin
-- MERCADO,Alejandro Samuel
-*/
+ FACULTAD DE INGENIERIA - TECNICATURA EN DISEÑO DE VIDEO JUEGOS
+ PROYECTO: JUEGO WAR-WANZER
+ 
+ - CARDOZO, Karen Yanina
+ - VILTE, Gonzalo Fabian
+ - SARAVIA, Maximiliano Leonel
+ - MELO, Joaquin Alejandro
+ - RODRIGUEZ, Santiago Agustin
+ - MERCADO,Alejandro Samuel
+ */
 
 void preCarga() {
   revolverImagen = loadImage("images/jugador/revolver.png");
@@ -22,32 +22,32 @@ void preCarga() {
 
 void barraDeEstado() {
 
-  stroke(255, 0, 0);
+  stroke(57, 255, 20);
   strokeWeight(1);
-  fill(255, 255, 255);
+  fill(47, 79, 79);
   //rect(2, alturaJogo, larguraJogo-3, 48, 10);
   rect(0, alturaJuego+1, anchoJuego-1, 48, 5);
 
   //Moedas
   image(moeda1_1Imagem, 5, alturaJuego+33);
-  fill(110, 110, 0);
-  textSize(16);
+  fill(57, 255, 2);
+  textSize(10);
   text("x" + monedas, 20, alturaJuego+45);
 
   //Caixas
   //image(caixa1BaseImagem, 65, alturaJuego+5);
-  fill(110, 110, 0);
-  textSize(16);
+  fill(57, 255, 2);
+  textSize(10);
   text("x" + objetoLimiteRestantes, 85, alturaJuego+18);
 
-  //Pontos
-  fill(255, 0, 0);
-  textSize(14);
-  text("Pontos: " + puntos, 65, alturaJuego+45);
+  //Puntos
+  fill(57, 255, 2);
+  textSize(10);
+  text("Puntos: " + puntos, 65, alturaJuego+45);
 
   //Inventario
   if (inventario == 1) {
-    fill(220, 220, 10);
+    fill(57, 255, 2);
     rect(200, alturaJuego+5, 40, 40);
     fill(120);
     rect(240, alturaJuego+5, 40, 40);
@@ -56,7 +56,7 @@ void barraDeEstado() {
   } else if (inventario == 2) {
     fill(120);
     rect(200, alturaJuego+5, 40, 40);
-    fill(220, 220, 10);
+    fill(57, 255, 2);
     rect(240, alturaJuego+5, 40, 40);
     fill(120);
     rect(280, alturaJuego+5, 40, 40);
@@ -65,7 +65,7 @@ void barraDeEstado() {
     fill(120);
     rect(200, alturaJuego+5, 40, 40);
     rect(240, alturaJuego+5, 40, 40);
-    fill(220, 220, 10);
+    fill(57, 255, 2);
     rect(280, alturaJuego+5, 40, 40);
     fill(120);
     rect(320, alturaJuego+5, 40, 40);
@@ -74,7 +74,7 @@ void barraDeEstado() {
     rect(200, alturaJuego+5, 40, 40);
     rect(240, alturaJuego+5, 40, 40);
     rect(280, alturaJuego+5, 40, 40);
-    fill(220, 220, 10);
+    fill(57, 255, 2);
     rect(320, alturaJuego+5, 40, 40);
   }
 
@@ -128,7 +128,7 @@ IntList b4 = new IntList(4);
 
 void tienda() {
   //Configuracoes Iniciais
-  fill(255, 0, 0);
+  fill(57, 255, 2);
   b1.append(25);
   b1.append(100);
   b1.append(btn1Imagem.width);
@@ -152,8 +152,12 @@ void tienda() {
   jugador1.abajo(false);
 
   //Desenhar
-  background(80);
-  textSize(40);
+  background(47, 79, 79);
+  PFont font = createFont("data/fonts/Coalition_v2..ttf", 40);
+  textFont(font);
+  textMode(CENTER);
+  textSize(60);
+  text("===== TIENDA =====", 55, 60);
   //Comprar Vidas
   image(btn3Imagem, b3.get(0), b3.get(1));
   //Comprar Metralhadora
