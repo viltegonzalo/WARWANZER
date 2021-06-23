@@ -7,4 +7,5 @@ PROYECTO: JUEGO WAR-WANZER
 - VILTE, Gonzalo Fabian
 - SARAVIA,Maximiliano Leonel
 - MELO, Joaquin Alejandro
+- RODRIGUEZ, Santiago Agustin 
 */
