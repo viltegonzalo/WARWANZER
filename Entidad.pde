@@ -115,13 +115,13 @@ enemigo4_1Imagem = loadImage("images/enemigo/robotEne1_1.png");
 enemigo4_2Imagem = loadImage("images/enemigo/robotEne1_2.png");
 enemigo4_3Imagem = loadImage("images/enemigo/robotEne1_2.png");
 
-bala1Imagem = loadImage("images/item/bala1Base.png");
+bala1Imagem = loadImage("images/item/ammo.png");
 //caixa1BaseImagem = loadImage("images/item/caixa1Base_100.png");
 
 moeda1_1Imagem = loadImage("images/item/moeda1_1Base.png");
 moeda1_2Imagem = loadImage("images/item/moeda1_2Base.png");
 moeda1_3Imagem = loadImage("images/item/moeda1_3Base.png");
-vida1Imagem = loadImage("images/item/vida1Base.png");
+vida1Imagem = loadImage("images/item/battery.png");
 //BORRAR
 }
 

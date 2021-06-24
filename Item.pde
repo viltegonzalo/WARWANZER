@@ -27,11 +27,13 @@ this.tipo = tipo;
 //Vida
 if(this.tipo == 1){
 this.imagen = vida1Imagem;//vg
+this.imagen.resize(35,35);
 this.tiempoVida = 10;
 }
 //Balas
 else if(this.tipo == 2){
 this.imagen = bala1Imagem;//vg
+this.imagen.resize(35,35);
 this.tiempoVida = 10;
 }
 //Moedas
