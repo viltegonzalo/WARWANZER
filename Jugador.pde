@@ -36,13 +36,13 @@ class Jugador extends Entidad {
     this.velocidadMax = 2;
     this.velocidadMin = 0.2;
     this.fuerza = 10;
-    this.imagen = p1_1Imagem;
+    //this.imagen = p1_1Imagem;
     this.frame = 1;
     this.vida = 15;
 
     this.imagenes=new ArrayList<PImage>();
     for (int i=1; i<=36; i++) {
-      this.imagenes.add(loadImage("images/jugador/"+i+".png"));
+      this.imagenes.add(loadImage(PATH_IMG_JUGADOR+i+".png"));
     }
   }
 
@@ -211,7 +211,7 @@ class Jugador extends Entidad {
       }
     }
     if (this.frame == 1) {
-      this.imagen = p1_1Imagem;
+      this.imagen = this.imagenes.get(19);
     }
     //else{
     //  this.imagem = p1_2Imagem;

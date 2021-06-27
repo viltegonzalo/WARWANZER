@@ -34,14 +34,6 @@ int balasMetraladora = 0;
 Jugador jugador1;
 int monedas = 50;
 
-//JUGADOR
-PImage p1_1Imagem, p1_2Imagem;
-
-//ENEMIGO
-PImage zombie1_1Imagem, zombie1_2Imagem;
-PImage zombie2_1Imagem, zombie2_2Imagem;
-PImage zombie3_1Imagem, zombie3_2Imagem;
-PImage zombie4_1Imagem, zombie4_2Imagem, zombie4_3Imagem;
 
 ArrayList<Enemigo> enemigos = new ArrayList();
 
@@ -86,23 +78,23 @@ void setup() {
   alturaJuego = height - 50;
   preCarga();//F_barraEstado
 
-  ////VIDEO INTRO
-  intro=new VideoPlayer(new Movie(this, "/video/video.mov"), width, height);  
-  ///////
-  ost1=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
-  ost2=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
-  ost3=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
-  ost4=new MusicPlayer(new Minim(this), "/data/music/nivel"+(int)random(0, 12)+".mp3");
+
+  intro=new VideoPlayer(new Movie(this, PATH_VIDEO_INTRO), width, height);  
+
+  ost1=new MusicPlayer(new Minim(this), PATH_MUSICA_FONDO+(int)random(0, 12)+".mp3");
+  ost2=new MusicPlayer(new Minim(this), PATH_MUSICA_FONDO+(int)random(0, 12)+".mp3");
+  ost3=new MusicPlayer(new Minim(this), PATH_MUSICA_FONDO+(int)random(0, 12)+".mp3");
+  ost4=new MusicPlayer(new Minim(this), PATH_MUSICA_FONDO+(int)random(0, 12)+".mp3");
   ost1.getMusic().setVolume(0.5);
   ost2.getMusic().setVolume(0.5);
   ost3.getMusic().setVolume(0.5);
   ost4.getMusic().setVolume(0.5);
-  ostGameOver=new MusicPlayer(new Minim(this), "/data/music/gameover.mp3");
-  sfxGun=new MusicPlayer(new Minim(this), "/data/music/gun1.mp3");
-  nivel1=new Nivel(1, "images/niveles/fondo1.jpg", 8, ost1);
-  nivel2=new Nivel(2, "images/niveles/fondo2.jpg", 8, ost2);
-  nivel3=new Nivel(3, "images/niveles/fondo3.jpg", 8, ost3);
-  nivel4=new Nivel(3, "images/niveles/fondo3.jpg", 8, ost4);
+  ostGameOver=new MusicPlayer(new Minim(this), PATH_MUSICA_GAMEROVER);
+  sfxGun=new MusicPlayer(new Minim(this), PATH_SFX_GUN);
+  nivel1=new Nivel(1, PATH_IMG_NIVEL_1, 8, ost1);
+  nivel2=new Nivel(2, PATH_IMG_NIVEL_2, 8, ost2);
+  nivel3=new Nivel(3, PATH_IMG_NIVEL_3, 8, ost3);
+  nivel4=new Nivel(3, PATH_IMG_NIVEL_4, 8, ost4);
 
   /*JUGADOR*/
   jugador1 = new Jugador();
@@ -119,18 +111,19 @@ for (int i=0; i<numEnemigos; i++) {
   boolean chocarJugador = false, chocarCaja = false; //*
 
   /*Agregar una caja a la ArrayList*/
-  limites.add(new ObjetoLimitante(360, 300));
+  //limites.add(new ObjetoLimitante(360, 300));
 
-  chocarJugador = chocarRect(jugador1, limites.get(0));
+  //chocarJugador = chocarRect(jugador1, limites.get(0));
 }
 
 void draw() {
   if (intro.isFinishMovie()) {
-
     if (pause == false) {
       switch(fase) {
       case 1: 
-        nivel1.displayNivel();        
+        nivel1.displayNivel();
+        limites=new ArrayList<ObjetoLimitante>();
+        limites=nivel1.getLimites();
         for (int i=0; i<nivel1.getListEne().size(); i++) {
           Enemigo generar=  nivel1.getListEne().get(i);
           generar.cadaEnemigo(nivel1.getListEne());
@@ -138,10 +131,13 @@ void draw() {
 
         frames(nivel1.getListEne());
         cadaBala(nivel1.getListEne());
+
         break;
       case 2:
         nivel1.getMusic().stopMusic();
         nivel2.displayNivel();
+        limites=new ArrayList<ObjetoLimitante>();
+        limites=nivel2.getLimites();
         for (int i=0; i<nivel2.getListEne().size(); i++) {     
           Enemigo generar=  nivel2.getListEne().get(i);
           generar.cadaEnemigo(nivel2.getListEne());
@@ -152,7 +148,9 @@ void draw() {
         break;
       case 3:
         nivel2.getMusic().stopMusic();        
-        nivel3.displayNivel();      
+        nivel3.displayNivel();
+        limites=new ArrayList<ObjetoLimitante>();
+        limites=nivel3.getLimites();
         for (int i=0; i<nivel3.getListEne().size(); i++) {
           Enemigo generar=  nivel3.getListEne().get(i);
           generar.cadaEnemigo(nivel3.getListEne());
@@ -163,7 +161,9 @@ void draw() {
         break;
       case 4:
         nivel3.getMusic().stopMusic();        
-        nivel4.displayNivel();      
+        nivel4.displayNivel();
+        limites=new ArrayList<ObjetoLimitante>();
+        limites=nivel4.getLimites();
         for (int i=0; i<nivel4.getListEne().size(); i++) {
           Enemigo generar=  nivel4.getListEne().get(i);
           generar.cadaEnemigo(nivel4.getListEne());
@@ -193,12 +193,12 @@ void draw() {
       tienda();
     }
 
-    for (int i=0; i<limites.size(); i++) {
-      ObjetoLimitante generar= limites .get(i);
-      generar.cadaCaja();
-      generar.grade();
-    }
-  }else if(VIDEO_INTRO) intro.moviePlay(); ///Reproduce el video INTRO
+    //for (int i=0; i<limites.size(); i++) {
+    //  ObjetoLimitante generar= limites .get(i);
+    //  generar.cadaCaja();
+    //  generar.grade();
+    //}
+  } else if (VIDEO_INTRO) intro.moviePlay(); ///Reproduce el video INTRO
 }
 
 void keyPressed() {

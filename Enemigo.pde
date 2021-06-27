@@ -10,7 +10,7 @@ FUNDAMETO DE PROGRAMACION ORIENTADO OBJETOS
  - RODRIGUEZ, Santiago Agustin
  - MERCADO,Alejandro Samuel
  */
-class Enemigo extends Entidad {
+class Enemigo extends Entidad{
 
   //Atributos
   private float velocidadX;
@@ -30,7 +30,7 @@ class Enemigo extends Entidad {
   public Enemigo() { 
     this.imagenes=new ArrayList<PImage>();
     for (int i=1; i<=16; i++) {
-      this.imagenes.add(loadImage("images/enemigo/"+i+".png"));
+      this.imagenes.add(loadImage(PATH_IMG_ENEMIGO+i+".png"));
     }
     this._color = color(0, 255, 0);
     this.velocidadBase = random(0.1, 0.2);

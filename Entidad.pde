@@ -11,28 +11,23 @@ FUNDAMETO DE PROGRAMACION ORIENTADO OBJETOS
  - MERCADO,Alejandro Samuel
  */
 public class Entidad {
-  //Atributos
-  //private float x, y, forcaEmpurrao, vidas;
+  //Atributos  
   protected PVector posicion;
   protected float fuerza;
-  protected float vida;
-
-  //private int largura, altura, tipo, ajusteImagemX, ajusteImagemY, totalFrames, tempoDanoBase, tempoDano;
+  protected float vida;  
   protected int ancho;
   protected int altura;
   protected int tipo;
   protected int ajusteImagenX;
   protected int ajusteImagenY;
   protected int totalFrames;
-  protected  int tiempoDanioBase;
-  protected  int tiempoDanio;
+  protected int tiempoDanioBase;
+  protected int tiempoDanio;
 
   protected color _color;
   protected PImage imagen;
-
   protected ArrayList<PImage> imagenes;
   
-  //private boolean collideEsquerda, collideDireita, collideCima, collideBaixo, levandoDano;
   protected boolean chocarIzquierda;
   protected boolean chocarDerecha;
   protected boolean chocarArriba;
@@ -52,18 +47,6 @@ public class Entidad {
     this.tiempoDanioBase=10;
     this.tiempoDanio=this.tiempoDanioBase;
     this.recibeDanio=false;
-
-
-
-
-    bala1Imagem = loadImage("images/item/ammo.png");
-    //caixa1BaseImagem = loadImage("images/item/caixa1Base_100.png");
-
-    moeda1_1Imagem = loadImage("images/item/moeda1_1Base.png");
-    moeda1_2Imagem = loadImage("images/item/moeda1_2Base.png");
-    moeda1_3Imagem = loadImage("images/item/moeda1_3Base.png");
-    vida1Imagem = loadImage("images/item/battery.png");
-    //BORRAR
   }
 
   /**Construtor parametrizado*/
