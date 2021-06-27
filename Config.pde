@@ -10,3 +10,6 @@ PROYECTO: JUEGO WAR-WANZER
 - RODRIGUEZ, Santiago Agustin 
 - MERCADO,Alejandro Samuel
 */
+
+final boolean MUSICA_FONDO=false;
+final boolean VIDEO_INTRO=false;
