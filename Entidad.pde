@@ -128,7 +128,6 @@ public class Entidad {
     }
   }
 
-
   //----------- METODOS ACCESORES------//
   public PVector getPos() {
     return this.posicion;

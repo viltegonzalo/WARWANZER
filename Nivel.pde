@@ -23,15 +23,29 @@ class Nivel {
   private int id;
 
   /**Construtor parametrizado*/
-  public Nivel(int nivel, String path, int cantEne) {
+  public Nivel(int nivel, int cantEne, MusicPlayer music) {
     this.enemigos=new ArrayList<Enemigo>();
     this.limites=new ArrayList<ObjetoLimitante>();
     
     this.generarLimites(nivel);
     this.cantEnemigo=cantEne;
     this.id=nivel;
-    this.fondo=loadImage(path);
+    switch(nivel) {
+      case 1: 
+        this.fondo=loadImage(PATH_IMG_NIVEL_1);
+        break;
+      case 2: 
+        this.fondo=loadImage(PATH_IMG_NIVEL_2);
+        break;
+      case 3: 
+        this.fondo=loadImage(PATH_IMG_NIVEL_3);
+        break;
+      case 4: 
+        this.fondo=loadImage(PATH_IMG_NIVEL_4);
+        break;
+    }    
     this.fondo.resize(width, height);
+    this.music=music;
 
     for (int i=0; i<cantEne; i++) {
       this.enemigos.add(new Enemigo());

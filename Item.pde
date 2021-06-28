@@ -28,13 +28,11 @@ class Item extends Entidad {
     switch(tipo) {
     case 1: //Vida
       this.imagen = loadImage(PATH_IMG_ITEM_VIDA);//vg
-      this.imagen.resize(35, 35);
-      
+      this.imagen.resize(35, 35);      
       break;
     case 2: //Balas
       this.imagen = loadImage(PATH_IMG_ITEM_BALA);
-      this.imagen.resize(35, 35);
-      
+      this.imagen.resize(35, 35);      
       break;
     case 3: //Moedas
       this.imagen = loadImage(PATH_IMG_ITEM_MONEDAS_1);      

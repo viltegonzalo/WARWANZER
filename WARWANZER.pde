@@ -20,27 +20,27 @@ MusicPlayer ostGameOver;
 MusicPlayer sfxGun;
 ArrayList<Item> items= new ArrayList();
 //F_Mira
-PImage mira1Imagen;
+//PImage mira1Imagen;
 boolean construir = false;
 
 //ITEM
-PImage vida1Imagem;
-PImage bala1Imagem;
-PImage moeda1_1Imagem, moeda1_2Imagem, moeda1_3Imagem;
+//PImage vida1Imagem;
+//PImage bala1Imagem;
+//PImage moeda1_1Imagem, moeda1_2Imagem, moeda1_3Imagem;
 int anchoJuego;
 int alturaJuego;
 int balasRevolver ;
-int balasMetraladora = 0;
+//int balasMetraladora = 0;
 Jugador jugador1;
 int monedas = 50;
 
 
-ArrayList<Enemigo> enemigos = new ArrayList();
+ArrayList<Enemigo> enemigos = new ArrayList<Enemigo>();
 
 //OBJETO LIMITANTE
 ArrayList<ObjetoLimitante> limites = new ArrayList();
-PImage caixa1_100Imagem, caixa1_75Imagem, caixa1_50Imagem, caixa1_25Imagem, caixa1_10Imagem;
-PImage caixa1BaseImagem;
+//PImage caixa1_100Imagem, caixa1_75Imagem, caixa1_50Imagem, caixa1_25Imagem, caixa1_10Imagem;
+//PImage caixa1BaseImagem;
 
 //F_Miras
 ArrayList<Proyectil> balas = new ArrayList();
@@ -70,14 +70,16 @@ Nivel nivel1;
 Nivel nivel2;
 Nivel nivel3;
 Nivel nivel4;
+BarraEstado barra;
 
 void setup() {
   frameRate(fps);
   size(1000, 700);
+
   anchoJuego = width;
   alturaJuego = height - 50;
-  preCarga();//F_barraEstado
-
+  //preCarga();//F_barraEstado
+  barra = new BarraEstado();
 
   intro=new VideoPlayer(new Movie(this, PATH_VIDEO_INTRO), width, height);  
 
@@ -91,14 +93,14 @@ void setup() {
   ost4.getMusic().setVolume(0.5);
   ostGameOver=new MusicPlayer(new Minim(this), PATH_MUSICA_GAMEROVER);
   sfxGun=new MusicPlayer(new Minim(this), PATH_SFX_GUN);
-  nivel1=new Nivel(1, PATH_IMG_NIVEL_1, 8, ost1);
-  nivel2=new Nivel(2, PATH_IMG_NIVEL_2, 8, ost2);
-  nivel3=new Nivel(3, PATH_IMG_NIVEL_3, 8, ost3);
-  nivel4=new Nivel(3, PATH_IMG_NIVEL_4, 8, ost4);
+  nivel1=new Nivel(1, 8, ost1);
+  nivel2=new Nivel(2, 8, ost2);
+  nivel3=new Nivel(3, 8, ost3);
+  nivel4=new Nivel(3, 8, ost4);
 
   /*JUGADOR*/
   jugador1 = new Jugador();
-
+  barra.setJugador(jugador1);
   /*ENEMIGOS*/
   //*Genera enemigos y lo guarda en el ArrayList de Enemigos*/
   /*
@@ -107,8 +109,8 @@ for (int i=0; i<numEnemigos; i++) {
    }
    */
   /*ECENARIO INICIAL*/
-  int numCajas = 1;
-  boolean chocarJugador = false, chocarCaja = false; //*
+  //int numCajas = 1;
+  //boolean chocarJugador = false, chocarCaja = false; //*
 
   /*Agregar una caja a la ArrayList*/
   //limites.add(new ObjetoLimitante(360, 300));
@@ -117,6 +119,8 @@ for (int i=0; i<numEnemigos; i++) {
 }
 
 void draw() {
+
+
   if (intro.isFinishMovie()) {
     if (pause == false) {
       switch(fase) {
@@ -181,16 +185,17 @@ void draw() {
       //MIRA
       mira();
       //Barra de Vida del Jugador
-      barraDeVida(jugador1);
+      barra.barraDeVida(jugador1);
       //Barra de Estado
-      barraDeEstado();
+      //barraDeEstado();
+      barra.display();
 
       //GAMER OVER
       if (jugador1.vida<=0) {
-        gameOver();
+        barra.gameOver();
       }
     } else {
-      tienda();
+      barra.tienda();
     }
 
     //for (int i=0; i<limites.size(); i++) {
@@ -300,23 +305,23 @@ if(chocarJugador == false && chocarCaja == false){
     }
   } else {
     if (mouseButton == 37) {
-      boolean chocarBtn1 = colisionPunto(mouseX, mouseY, b1.get(0), b1.get(1), b1.get(2), b1.get(3));
-      boolean chocarBtn2 = colisionPunto(mouseX, mouseY, b2.get(0), b2.get(1), b2.get(2), b2.get(3));
-      boolean chocarBtn3 = colisionPunto(mouseX, mouseY, b3.get(0), b3.get(1), b3.get(2), b3.get(3));
-      boolean chocarBtn4 = colisionPunto(mouseX, mouseY, b4.get(0), b4.get(1), b4.get(2), b4.get(3));
+      boolean chocarBtn1 = colisionPunto(mouseX, mouseY, barra.getB1().get(0), barra.getB1().get(1), barra.getB1().get(2), barra.getB1().get(3));
+      boolean chocarBtn2 = colisionPunto(mouseX, mouseY, barra.getB2().get(0), barra.getB2().get(1), barra.getB2().get(2), barra.getB2().get(3));
+      boolean chocarBtn3 = colisionPunto(mouseX, mouseY, barra.getB3().get(0), barra.getB3().get(1), barra.getB3().get(2), barra.getB3().get(3));
+      //boolean chocarBtn4 = colisionPunto(mouseX, mouseY, barra.getB4().get(0), barra.getB4().get(1), barra.getB4().get(2), barra.getB4().get(3));
       if (chocarBtn1 && monedas >= 10) {
-        balasRevolver += 16;
-        monedas -= 10;
+        //objetoLimiteRestantes += 5;
+        //monedas -= 10;
       } else if (chocarBtn2 && monedas >= 10) {
-        objetoLimiteRestantes += 5;
+        balasRevolver += 16;
         monedas -= 10;
       } else if (chocarBtn3 && monedas >= 25 && jugador1.vida < 10) {
         jugador1.vida = 10;
-        monedas -= 25;
-      } else if (chocarBtn4 && monedas >= 100) {
-        jugador1.vida = 10;
-        monedas -= 25;
-      }
+        monedas -= 25;}
+      // else if (chocarBtn4 && monedas >= 100) {
+      //  jugador1.vida = 10;
+      //  monedas -= 25;
+      //}
     }
   }
 }

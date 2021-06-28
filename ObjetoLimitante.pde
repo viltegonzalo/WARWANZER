@@ -22,7 +22,7 @@ class ObjetoLimitante extends Entidad {
     this.posicion.y = 0;
     this.ancho = 32;
     this.altura = 32;
-    this.imagen = caixa1_100Imagem;
+    //this.imagen = caixa1_100Imagem;
     this.fuerza = 0;
     this.vidasMax = 300;
     this.vida = this.vidasMax;
@@ -34,7 +34,7 @@ class ObjetoLimitante extends Entidad {
     this.posicion.y = y;
     this.ancho = 32;
     this.altura = 32;
-    this.imagen = caixa1_100Imagem;
+    //this.imagen = caixa1_100Imagem;
     this.fuerza = 0;
     this.vidasMax = 300;
     this.vida = this.vidasMax;
@@ -46,7 +46,7 @@ class ObjetoLimitante extends Entidad {
     this.posicion.y = y;
     this.ancho = w;
     this.altura = h;
-    this.imagen = caixa1_100Imagem;
+    //this.imagen = caixa1_100Imagem;
     this.fuerza = 0;
     this.vidasMax = 300;
     this.vida = this.vidasMax;

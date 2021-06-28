@@ -27,8 +27,14 @@ class Jugador extends Entidad {
 
   /**Construtor Por defecto*/
   public Jugador() {
-    this.ancho = 35;
-    this.altura = 40;
+    //this.ancho = 35;
+    //this.altura = 40;
+    this.imagenes=new ArrayList<PImage>();
+    for (int i=1; i<=36; i++) {
+      this.imagenes.add(loadImage(PATH_IMG_JUGADOR+i+".png"));
+    }
+    this.ancho = W_PERSONAJE;
+    this.altura = H_PERSONAJE;
     this.aceleracion = 0.4;
     this.desaceleracion = 0.2;
     this.velocidadX = 0;
@@ -36,14 +42,9 @@ class Jugador extends Entidad {
     this.velocidadMax = 2;
     this.velocidadMin = 0.2;
     this.fuerza = 10;
-    //this.imagen = p1_1Imagem;
+    this.imagen = this.imagenes.get(18);
     this.frame = 1;
     this.vida = 15;
-
-    this.imagenes=new ArrayList<PImage>();
-    for (int i=1; i<=36; i++) {
-      this.imagenes.add(loadImage(PATH_IMG_JUGADOR+i+".png"));
-    }
   }
 
 
@@ -228,17 +229,34 @@ class Jugador extends Entidad {
       }
 
       switch(frame) {
-      case 1: this.imagen=this.imagenes.get(0);break;
-      case 2: this.imagen=this.imagenes.get(1);break;
-      case 3: this.imagen=this.imagenes.get(2);break;
-      case 4: this.imagen=this.imagenes.get(3);break;
-      case 5: this.imagen=this.imagenes.get(4);break;
-      case 6: this.imagen=this.imagenes.get(5);break;
-      case 7: this.imagen=this.imagenes.get(6);break;
-      case 8: this.imagen=this.imagenes.get(7);break;
-      case 9: this.imagen=this.imagenes.get(8);break;
+      case 1: 
+        this.imagen=this.imagenes.get(0);
+        break;
+      case 2: 
+        this.imagen=this.imagenes.get(1);
+        break;
+      case 3: 
+        this.imagen=this.imagenes.get(2);
+        break;
+      case 4: 
+        this.imagen=this.imagenes.get(3);
+        break;
+      case 5: 
+        this.imagen=this.imagenes.get(4);
+        break;
+      case 6: 
+        this.imagen=this.imagenes.get(5);
+        break;
+      case 7: 
+        this.imagen=this.imagenes.get(6);
+        break;
+      case 8: 
+        this.imagen=this.imagenes.get(7);
+        break;
+      case 9: 
+        this.imagen=this.imagenes.get(8);
+        break;
       }
-
     }
   }
 
@@ -249,20 +267,36 @@ class Jugador extends Entidad {
       if (this.frame > 10) {
         this.frame = 1;
       }
-      
-      switch(frame) {
-        case 1: this.imagen=this.imagenes.get(9);break;
-        case 2: this.imagen=this.imagenes.get(10);break;
-        case 3: this.imagen=this.imagenes.get(11);break;
-        case 4: this.imagen=this.imagenes.get(12);break;
-        case 5: this.imagen=this.imagenes.get(13);break;
-        case 6: this.imagen=this.imagenes.get(14);break;
-        case 7: this.imagen=this.imagenes.get(15);break;
-        case 8: this.imagen=this.imagenes.get(16);break;
-        case 9: this.imagen=this.imagenes.get(17);break;
-      }
-      
 
+      switch(frame) {
+      case 1: 
+        this.imagen=this.imagenes.get(9);
+        break;
+      case 2: 
+        this.imagen=this.imagenes.get(10);
+        break;
+      case 3: 
+        this.imagen=this.imagenes.get(11);
+        break;
+      case 4: 
+        this.imagen=this.imagenes.get(12);
+        break;
+      case 5: 
+        this.imagen=this.imagenes.get(13);
+        break;
+      case 6: 
+        this.imagen=this.imagenes.get(14);
+        break;
+      case 7: 
+        this.imagen=this.imagenes.get(15);
+        break;
+      case 8: 
+        this.imagen=this.imagenes.get(16);
+        break;
+      case 9: 
+        this.imagen=this.imagenes.get(17);
+        break;
+      }
     }
   }
 
@@ -274,19 +308,36 @@ class Jugador extends Entidad {
       if (this.frame > 10) {
         this.frame = 1;
       }
-      
-      switch(frame) {
-        case 1: this.imagen=this.imagenes.get(18);break;
-        case 2: this.imagen=this.imagenes.get(19);break;
-        case 3: this.imagen=this.imagenes.get(20);break;
-        case 4: this.imagen=this.imagenes.get(21);break;
-        case 5: this.imagen=this.imagenes.get(22);break;
-        case 6: this.imagen=this.imagenes.get(23);break;
-        case 7: this.imagen=this.imagenes.get(24);break;
-        case 8: this.imagen=this.imagenes.get(25);break;
-        case 9: this.imagen=this.imagenes.get(26);break;
-      }
 
+      switch(frame) {
+      case 1: 
+        this.imagen=this.imagenes.get(18);
+        break;
+      case 2: 
+        this.imagen=this.imagenes.get(19);
+        break;
+      case 3: 
+        this.imagen=this.imagenes.get(20);
+        break;
+      case 4: 
+        this.imagen=this.imagenes.get(21);
+        break;
+      case 5: 
+        this.imagen=this.imagenes.get(22);
+        break;
+      case 6: 
+        this.imagen=this.imagenes.get(23);
+        break;
+      case 7: 
+        this.imagen=this.imagenes.get(24);
+        break;
+      case 8: 
+        this.imagen=this.imagenes.get(25);
+        break;
+      case 9: 
+        this.imagen=this.imagenes.get(26);
+        break;
+      }
     }
   }
 
@@ -299,15 +350,33 @@ class Jugador extends Entidad {
         this.frame = 1;
       }
       switch(frame) {
-        case 1: this.imagen=this.imagenes.get(27);break;
-        case 2: this.imagen=this.imagenes.get(28);break;
-        case 3: this.imagen=this.imagenes.get(29);break;
-        case 4: this.imagen=this.imagenes.get(30);break;
-        case 5: this.imagen=this.imagenes.get(31);break;
-        case 6: this.imagen=this.imagenes.get(32);break;
-        case 7: this.imagen=this.imagenes.get(33);break;
-        case 8: this.imagen=this.imagenes.get(34);break;
-        case 9: this.imagen=this.imagenes.get(35);break;
+      case 1: 
+        this.imagen=this.imagenes.get(27);
+        break;
+      case 2: 
+        this.imagen=this.imagenes.get(28);
+        break;
+      case 3: 
+        this.imagen=this.imagenes.get(29);
+        break;
+      case 4: 
+        this.imagen=this.imagenes.get(30);
+        break;
+      case 5: 
+        this.imagen=this.imagenes.get(31);
+        break;
+      case 6: 
+        this.imagen=this.imagenes.get(32);
+        break;
+      case 7: 
+        this.imagen=this.imagenes.get(33);
+        break;
+      case 8: 
+        this.imagen=this.imagenes.get(34);
+        break;
+      case 9: 
+        this.imagen=this.imagenes.get(35);
+        break;
       }
     }
   }
