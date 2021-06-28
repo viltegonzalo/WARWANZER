@@ -40,7 +40,7 @@ public class Entidad {
     this.ancho=20;
     this.altura=20;
     this.posicion=new PVector((int)250-this.ancho/2, (int)250-this.altura/2);
-    this._color=color(250, 0, 0);
+    this._color=color(250,0);
     this.fuerza=5;
     this.tipo=1;
     this.totalFrames=0;
@@ -68,7 +68,7 @@ public class Entidad {
   public void display(){
       if (this.imagen != null) {
       noStroke();
-      fill(255, 255, 255, 0);
+      fill(255, 0);
       rect(this.posicion.x, this.posicion.y, this.ancho, this.altura);
       if (this.recibeDanio == true) {
         tint(255, 255-this.tiempoDanio*20, 255-this.tiempoDanio*20);
@@ -92,7 +92,7 @@ public class Entidad {
   public void paraDiseniar() {
     if (this.imagen != null) {
       noStroke();
-      fill(255, 255, 255, 0);
+      fill(255, 0);
       rect(this.posicion.x, this.posicion.y, this.ancho, this.altura);
       if (this.recibeDanio == true) {
         tint(255, 255-this.tiempoDanio*20, 255-this.tiempoDanio*20);

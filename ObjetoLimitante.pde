@@ -20,8 +20,8 @@ class ObjetoLimitante extends Entidad {
   public ObjetoLimitante() {
     this.posicion.x =0;
     this.posicion.y = 0;
-    this.ancho = 32;
-    this.altura = 32;
+    this.ancho = 20;
+    this.altura = 20;
     //this.imagen = caixa1_100Imagem;
     this.fuerza = 0;
     this.vidasMax = 300;
@@ -32,8 +32,8 @@ class ObjetoLimitante extends Entidad {
   public ObjetoLimitante(int x, int y) {
     this.posicion.x = x;
     this.posicion.y = y;
-    this.ancho = 32;
-    this.altura = 32;
+    this.ancho = 20;
+    this.altura = 20;
     //this.imagen = caixa1_100Imagem;
     this.fuerza = 0;
     this.vidasMax = 300;

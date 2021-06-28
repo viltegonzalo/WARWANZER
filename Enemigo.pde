@@ -40,28 +40,28 @@ class Enemigo extends Entidad {
     switch(this.tipo) {
     case 1: 
       this.ancho = 34;
-      this.altura = 40;
+      this.altura = 55;
       this.ajusteImagenX = -2;
       this.ajusteImagenY = 0;
       this.totalFrames = 16;
       break;
     case 2: 
       this.ancho = 34;
-      this.altura = 40;
+      this.altura = 55;
       this.ajusteImagenX = 0;
       this.ajusteImagenY = 0;
       this.totalFrames = 16;
       break;
     case 3: 
       this.ancho = 34;
-      this.altura = 40;
+      this.altura = 55;
       this.ajusteImagenX = -4;
       this.ajusteImagenY = 0;
       this.totalFrames = 16;
       break;
     case 4: 
       this.ancho = 34;
-      this.altura = 40;
+      this.altura = 55;
       this.ajusteImagenX = 0;
       this.ajusteImagenY = 0;
       this.totalFrames = 16;
