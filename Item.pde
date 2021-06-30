@@ -54,12 +54,12 @@ class Item extends Entidad {
     }
   }
 
-  public void sobrepondo() {
+  public void sobrepondo() {//superpuesto
     this.posicion.x = random(10, anchoJuego-26);
     this.posicion.y = random(10, alturaJuego-26);
   }
 
-  public void coletar() {
+  public void coletar() {//recoger-recolectar
     if (this.tipo == 1) {//Vidas
       jugador1.vida = 10;
     } else if (this.tipo == 2) {//Balas
@@ -79,7 +79,6 @@ class Item extends Entidad {
           this.frame = 1;
         }
       }
-
       if (this.frame == 1) {
         this.imagen = loadImage(PATH_IMG_ITEM_MONEDAS_1);
       } else if (this.frame == 2) {

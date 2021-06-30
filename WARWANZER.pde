@@ -11,7 +11,12 @@ FUNDAMETO DE PROGRAMACION ORIENTADO OBJETOS
  - MERCADO,Alejandro Samuel
  */
 import processing.video.*;
+Pantalla pantallaPrincipal;
 VideoPlayer intro;
+VideoPlayer creditos;
+
+boolean estadoPantalla=true;
+///////////VARIABLES DEL JUEGO////////////////
 MusicPlayer ost1;
 MusicPlayer ost2;
 MusicPlayer ost3;
@@ -19,70 +24,58 @@ MusicPlayer ost4;
 MusicPlayer ostGameOver;
 MusicPlayer sfxGun;
 ArrayList<Item> items= new ArrayList();
-//F_Mira
-//PImage mira1Imagen;
-boolean construir = false;
-
-//ITEM
-//PImage vida1Imagem;
-//PImage bala1Imagem;
-//PImage moeda1_1Imagem, moeda1_2Imagem, moeda1_3Imagem;
-int anchoJuego;
-int alturaJuego;
-int balasRevolver ;
-//int balasMetraladora = 0;
-Jugador jugador1;
-int monedas = 50;
-
-
 ArrayList<Enemigo> enemigos = new ArrayList<Enemigo>();
-
-//OBJETO LIMITANTE
-ArrayList<ObjetoLimitante> limites = new ArrayList();
-//PImage caixa1_100Imagem, caixa1_75Imagem, caixa1_50Imagem, caixa1_25Imagem, caixa1_10Imagem;
-//PImage caixa1BaseImagem;
-
-//F_Miras
 ArrayList<Proyectil> balas = new ArrayList();
-IntList balasPerdidas = new IntList();
-int enemigosMuertos=0;
-int puntos;
-int fase = 1, proximaFase = 8, tazaEnemigo = round(fase/4)+1, tiempoAparicionEnemigo = 10;
+ArrayList<ObjetoLimitante> limites = new ArrayList();
 
-
-//BARRA DE ESTADO
-int objetoLimiteRestantes = 0;
-int inventario = 1;
-PImage revolverImagen;
-PImage metralladoraImagen;
-PImage btn1Imagem, btn2Imagem, btn3Imagem, btn4Imagem;
-boolean debug = false;
-boolean gameOver = false;
-
-//PRINCIPAL
-int fps = 60;
-int numEnemigos =8;
-//PImage nivel1;
-//PImage nivel2;
-boolean pause = false;
-int limiteCajas = 150;
+Jugador jugador1;
+BarraEstado barra;
 Nivel nivel1;
 Nivel nivel2;
 Nivel nivel3;
 Nivel nivel4;
-BarraEstado barra;
+//F_Mira
+
+//ITEM
+int anchoJuego;
+int alturaJuego;
+int balasRevolver ;
+int monedas = 50;
+//int balasMetraladora = 0;
+IntList balasPerdidas = new IntList();//F_Miras
+int enemigosMuertos=0;//F_Miras
+int puntos;//F_Miras
+int fase = 1, proximaFase = 8, tazaEnemigo = round(fase/4)+1, tiempoAparicionEnemigo = 10;//F_Miras
+int objetoLimiteRestantes = 0;//BARRA DE ESTADO
+int inventario = 1;//BARRA DE ESTADO
+int fps = 60;//PRINCIPAL
+int numEnemigos =8;//PRINCIPAL
+int limiteCajas = 150;//PRINCIPAL
+boolean pause = false;
+boolean debug = false;//BARRA DE ESTADO
+boolean gameOver = false;//BARRA DE ESTADO
+boolean construir = false;
+//////////////////////////////////////////////
+
 
 void setup() {
   frameRate(fps);
   size(1000, 700);
 
   anchoJuego = width;
-  alturaJuego = height - 50;
-  //preCarga();//F_barraEstado
-  barra = new BarraEstado();
-
+  alturaJuego = height - 50;    
   intro=new VideoPlayer(new Movie(this, PATH_VIDEO_INTRO), width, height);  
+  //creditos=new VideoPlayer(new Movie(this, PATH_VIDEO_CREDITOS), width, height);
 
+  //video_intro=new Movie (this, PATH_VIDEO_INTRO);
+  //video_credito=new Movie (this, PATH_VIDEO_CREDITOS);
+  //video_intro.play();
+  //video_credito.play();
+
+
+  pantallaPrincipal= new Pantalla(3);
+  ////////SETUP DEL JUEGO//////////////////
+  barra = new BarraEstado();
   ost1=new MusicPlayer(new Minim(this), PATH_MUSICA_FONDO+(int)random(0, 12)+".mp3");
   ost2=new MusicPlayer(new Minim(this), PATH_MUSICA_FONDO+(int)random(0, 12)+".mp3");
   ost3=new MusicPlayer(new Minim(this), PATH_MUSICA_FONDO+(int)random(0, 12)+".mp3");
@@ -97,113 +90,212 @@ void setup() {
   nivel2=new Nivel(2, 8, ost2);
   nivel3=new Nivel(3, 8, ost3);
   nivel4=new Nivel(3, 8, ost4);
-
   /*JUGADOR*/
   jugador1 = new Jugador();
   barra.setJugador(jugador1);
-  /*ENEMIGOS*/
-  //*Genera enemigos y lo guarda en el ArrayList de Enemigos*/
-  /*
-for (int i=0; i<numEnemigos; i++) {
-   enemigos.add(new Enemigo());
-   }
-   */
-  /*ECENARIO INICIAL*/
-  //int numCajas = 1;
-  //boolean chocarJugador = false, chocarCaja = false; //*
-
-  /*Agregar una caja a la ArrayList*/
-  //limites.add(new ObjetoLimitante(360, 300));
-
-  //chocarJugador = chocarRect(jugador1, limites.get(0));
+  /////////////////////////////////////////////////
 }
 
 void draw() {
-
-
+  /////////////////////INICIO DEL JUEGO/////////////////////
   if (intro.isFinishMovie()) {
-    if (pause == false) {
-      switch(fase) {
-      case 1: 
-        nivel1.displayNivel();
-        limites=new ArrayList<ObjetoLimitante>();
-        limites=nivel1.getLimites();
-        for (int i=0; i<nivel1.getListEne().size(); i++) {
-          Enemigo generar=  nivel1.getListEne().get(i);
-          generar.cadaEnemigo(nivel1.getListEne());
+    if (estadoPantalla) pantallaPrincipal. display();
+
+
+    if (pantallaPrincipal.getBtns().get(0).getClick()) {
+      estadoPantalla=false;
+
+
+      if (pause == false) {
+        switch(fase) {
+        case 1: 
+          nivel1.displayNivel();
+          limites=new ArrayList<ObjetoLimitante>();
+          limites=nivel1.getLimites();
+          for (int i=0; i<nivel1.getListEne().size(); i++) {
+            Enemigo generar=  nivel1.getListEne().get(i);
+            generar.cadaEnemigo(nivel1.getListEne());
+          }
+
+          frames(nivel1.getListEne());
+          cadaBala(nivel1.getListEne());
+
+          break;
+        case 2:
+          nivel1.getMusic().stopMusic();
+          nivel2.displayNivel();
+          limites=new ArrayList<ObjetoLimitante>();
+          limites=nivel2.getLimites();
+          for (int i=0; i<nivel2.getListEne().size(); i++) {     
+            Enemigo generar=  nivel2.getListEne().get(i);
+            generar.cadaEnemigo(nivel2.getListEne());
+          }
+
+          frames(nivel2.getListEne());
+          cadaBala(nivel2.getListEne());
+          break;
+        case 3:
+          nivel2.getMusic().stopMusic();        
+          nivel3.displayNivel();
+          limites=new ArrayList<ObjetoLimitante>();
+          limites=nivel3.getLimites();
+          for (int i=0; i<nivel3.getListEne().size(); i++) {
+            Enemigo generar=  nivel3.getListEne().get(i);
+            generar.cadaEnemigo(nivel3.getListEne());
+          }
+
+          frames(nivel3.getListEne());
+          cadaBala(nivel3.getListEne());//F_Mira
+          break;
+        case 4:
+          nivel3.getMusic().stopMusic();        
+          nivel4.displayNivel();
+          limites=new ArrayList<ObjetoLimitante>();
+          limites=nivel4.getLimites();
+          for (int i=0; i<nivel4.getListEne().size(); i++) {
+            Enemigo generar=  nivel4.getListEne().get(i);
+            generar.cadaEnemigo(nivel4.getListEne());
+          }
+
+          frames(nivel4.getListEne());
+          cadaBala(nivel4.getListEne());//F_Mira
+          break;
+        default: 
+          fase=1;
+          break;
         }
+        jugador1.girar();
+        cadaItem();
+        //MIRA
+        mira();
+        //Barra de Vida del Jugador
+        barra.barraDeVida(jugador1);
+        //Barra de Estado
+        //barraDeEstado();
+        barra.display();
 
-        frames(nivel1.getListEne());
-        cadaBala(nivel1.getListEne());
-
-        break;
-      case 2:
-        nivel1.getMusic().stopMusic();
-        nivel2.displayNivel();
-        limites=new ArrayList<ObjetoLimitante>();
-        limites=nivel2.getLimites();
-        for (int i=0; i<nivel2.getListEne().size(); i++) {     
-          Enemigo generar=  nivel2.getListEne().get(i);
-          generar.cadaEnemigo(nivel2.getListEne());
+        //GAMER OVER
+        if (jugador1.vida<=0) {
+          barra.gameOver();
         }
-
-        frames(nivel2.getListEne());
-        cadaBala(nivel2.getListEne());
-        break;
-      case 3:
-        nivel2.getMusic().stopMusic();        
-        nivel3.displayNivel();
-        limites=new ArrayList<ObjetoLimitante>();
-        limites=nivel3.getLimites();
-        for (int i=0; i<nivel3.getListEne().size(); i++) {
-          Enemigo generar=  nivel3.getListEne().get(i);
-          generar.cadaEnemigo(nivel3.getListEne());
-        }
-
-        frames(nivel3.getListEne());
-        cadaBala(nivel3.getListEne());//F_Mira
-        break;
-      case 4:
-        nivel3.getMusic().stopMusic();        
-        nivel4.displayNivel();
-        limites=new ArrayList<ObjetoLimitante>();
-        limites=nivel4.getLimites();
-        for (int i=0; i<nivel4.getListEne().size(); i++) {
-          Enemigo generar=  nivel4.getListEne().get(i);
-          generar.cadaEnemigo(nivel4.getListEne());
-        }
-
-        frames(nivel4.getListEne());
-        cadaBala(nivel4.getListEne());//F_Mira
-        break;
-      default: 
-        fase=1;
-        break;
+      } else {
+        barra.tienda();
       }
-      jugador1.girar();
-      cadaItem();
-      //MIRA
-      mira();
-      //Barra de Vida del Jugador
-      barra.barraDeVida(jugador1);
-      //Barra de Estado
-      //barraDeEstado();
-      barra.display();
-
-      //GAMER OVER
-      if (jugador1.vida<=0) {
-        barra.gameOver();
-      }
-    } else {
-      barra.tienda();
     }
-
-    //for (int i=0; i<limites.size(); i++) {
-    //  ObjetoLimitante generar= limites .get(i);
-    //  generar.cadaCaja();
-    //  generar.grade();
-    //}
   } else if (VIDEO_INTRO) intro.moviePlay(); ///Reproduce el video INTRO
+
+  ///////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+  //if (estadoPantalla) {
+  //  pantallaPrincipal. display();
+  //  if (pantallaPrincipal.getBtns().get(0).getClick()) {
+  //    estadoPantalla=false;
+  //    println("ENTRO AL JUEGO");
+  //  }
+  //  //if (pantallaPrincipal.getBtns().get(1).mouseDragged()==2) {
+  //  //  creditos.moviePlay();
+  //  //  noLoop();
+  //  //}
+
+  //  //    if (pantallaPrincipal.getBtns().get(2).mouseDragged()==3) {
+  //  //      noLoop();
+  //  //    }
+  //}
+
+
+
+
+
+
+
+  /////////////////////INICIO DEL JUEGO/////////////////////
+  //if (intro.isFinishMovie()) {
+  //  if (pause == false) {
+  //    switch(fase) {
+  //    case 1: 
+  //      nivel1.displayNivel();
+  //      limites=new ArrayList<ObjetoLimitante>();
+  //      limites=nivel1.getLimites();
+  //      for (int i=0; i<nivel1.getListEne().size(); i++) {
+  //        Enemigo generar=  nivel1.getListEne().get(i);
+  //        generar.cadaEnemigo(nivel1.getListEne());
+  //      }
+
+  //      frames(nivel1.getListEne());
+  //      cadaBala(nivel1.getListEne());
+
+  //      break;
+  //    case 2:
+  //      nivel1.getMusic().stopMusic();
+  //      nivel2.displayNivel();
+  //      limites=new ArrayList<ObjetoLimitante>();
+  //      limites=nivel2.getLimites();
+  //      for (int i=0; i<nivel2.getListEne().size(); i++) {     
+  //        Enemigo generar=  nivel2.getListEne().get(i);
+  //        generar.cadaEnemigo(nivel2.getListEne());
+  //      }
+
+  //      frames(nivel2.getListEne());
+  //      cadaBala(nivel2.getListEne());
+  //      break;
+  //    case 3:
+  //      nivel2.getMusic().stopMusic();        
+  //      nivel3.displayNivel();
+  //      limites=new ArrayList<ObjetoLimitante>();
+  //      limites=nivel3.getLimites();
+  //      for (int i=0; i<nivel3.getListEne().size(); i++) {
+  //        Enemigo generar=  nivel3.getListEne().get(i);
+  //        generar.cadaEnemigo(nivel3.getListEne());
+  //      }
+
+  //      frames(nivel3.getListEne());
+  //      cadaBala(nivel3.getListEne());//F_Mira
+  //      break;
+  //    case 4:
+  //      nivel3.getMusic().stopMusic();        
+  //      nivel4.displayNivel();
+  //      limites=new ArrayList<ObjetoLimitante>();
+  //      limites=nivel4.getLimites();
+  //      for (int i=0; i<nivel4.getListEne().size(); i++) {
+  //        Enemigo generar=  nivel4.getListEne().get(i);
+  //        generar.cadaEnemigo(nivel4.getListEne());
+  //      }
+
+  //      frames(nivel4.getListEne());
+  //      cadaBala(nivel4.getListEne());//F_Mira
+  //      break;
+  //    default: 
+  //      fase=1;
+  //      break;
+  //    }
+  //    jugador1.girar();
+  //    cadaItem();
+  //    //MIRA
+  //    mira();
+  //    //Barra de Vida del Jugador
+  //    barra.barraDeVida(jugador1);
+  //    //Barra de Estado
+  //    //barraDeEstado();
+  //    barra.display();
+
+  //    //GAMER OVER
+  //    if (jugador1.vida<=0) {
+  //      barra.gameOver();
+  //    }
+  //  } else {
+  //    barra.tienda();
+  //  }
+
+  //} else if (VIDEO_INTRO) intro.moviePlay(); ///Reproduce el video INTRO
+
+  ///////////////////////////////////////////////////////////////////////
 }
 
 void keyPressed() {
@@ -317,7 +409,8 @@ if(chocarJugador == false && chocarCaja == false){
         monedas -= 10;
       } else if (chocarBtn3 && monedas >= 25 && jugador1.vida < 10) {
         jugador1.vida = 10;
-        monedas -= 25;}
+        monedas -= 25;
+      }
       // else if (chocarBtn4 && monedas >= 100) {
       //  jugador1.vida = 10;
       //  monedas -= 25;

@@ -1,22 +1,24 @@
 /*
 FUNDAMETO DE PROGRAMACION ORIENTADO OBJETOS
-FACULTAD DE INGENIERIA - TECNICATURA EN DISEÑO DE VIDEO JUEGOS
-PROYECTO: JUEGO WAR-WANZER
-
-- CARDOZO, Karen Yanina
-- VILTE, Gonzalo Fabian
-- SARAVIA,Maximiliano Leonel
-- MELO, Joaquin Alejandro
-- RODRIGUEZ, Santiago Agustin 
-- MERCADO,Alejandro Samuel
-*/
+ FACULTAD DE INGENIERIA - TECNICATURA EN DISEÑO DE VIDEO JUEGOS
+ PROYECTO: JUEGO WAR-WANZER
+ 
+ - CARDOZO, Karen Yanina
+ - VILTE, Gonzalo Fabian
+ - SARAVIA,Maximiliano Leonel
+ - MELO, Joaquin Alejandro
+ - RODRIGUEZ, Santiago Agustin 
+ - MERCADO,Alejandro Samuel
+ */
 final int W_PERSONAJE=35;
 final int H_PERSONAJE=40;
 final int TIEMPO_VIDA_ITEM=10;
 final int NUM_ENEMIGO=8;
 
 final boolean MUSICA_FONDO=false;
-final boolean VIDEO_INTRO=false;
+final boolean VIDEO=true;
+final boolean VIDEO_INTRO=true;
+final boolean VIDEO_CREDITOS=false;
 
 final String PATH_IMG_ENEMIGO="images/enemigo/";
 final String PATH_IMG_JUGADOR="images/jugador/";
@@ -34,10 +36,16 @@ final String PATH_IMG_TIENDA_TITULO="images/tienda/tituloTienda.png";
 final String PATH_IMG_TIENDA_BTN="images/tienda/boton/";
 final String PATH_IMG_ICO_ARMA_1="images/jugador/revolver.png";
 final String PATH_IMG_ICO_ARMA_2="images/jugador/metralhadora.png";
+final String PATH_IMG_PANTALLA_MAIN="/pantalla/background.png";
+final String PATH_IMG_PANTALLA_CUADRO="/pantalla/cuadro.png";
+final String PATH_BTN_PLAY_MAIN="btn/1.png";
+final String PATH_BTN_INTRO_MAIN="btn/2.png";
+final String PATH_BTN_EXIT_MAIN="btn/3.png";
+final String PATH_BTN_PLAY_MAIN_D="btn/playVerde.png";
+final String PATH_BTN_INTRO_MAIN_D="btn/introVerde.png";
+final String PATH_BTN_EXIT_MAIN_D="btn/exitVerde.png";
 final String PATH_VIDEO_INTRO="/video/video.mov";
-final String PATH_VIDEO_CREDITOS="/video/video.mov";
+final String PATH_VIDEO_CREDITOS="/video/creditos.mov";
 final String PATH_MUSICA_FONDO="/data/music/nivel";
 final String PATH_MUSICA_GAMEROVER="/data/music/gameover.mp3";
 final String PATH_SFX_GUN="/data/music/gun1.mp3";
-
- 
